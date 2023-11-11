@@ -1,0 +1,27 @@
+
+
+.flex-item {
+    /* Styles pour chaque élément à l'intérieur du conteneur flex */
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #ddd;
+
+    
+}
+.testimonial-carousel{
+    width: 100%;
+}
+.test{
+    width: 100% !important;
+    height: 100% !important;
+    
+    
+}
+.container-xxl {
+    max-width: 100% !important;
+    height: 100% !important;
+}
+.hero-header{
+    max-width: 100% !important;
+    height: 100% !important;
+}
