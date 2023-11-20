@@ -66,25 +66,25 @@ public class AuthenticationService {
     }
 
 
-//    public AuthenticationResponse authenticate(AuthenticationRequest request) {
-//        authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        request.getEmail(),
-//                        request.getMotDePasse()
-//                )
-//        );
-//        var user = repository.findByEmail(request.getEmail())
-//                .orElseThrow();
-//        var jwtToken = jwtService.generateToken((UserDetails) user);
-//        var refreshToken = jwtService.generateRefreshToken((UserDetails) user);
-//        revokeAllUserTokens(user);
-//        saveUserToken(user, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .accessToken(jwtToken)
-//                .refreshToken(refreshToken)
-//                .user(user)
-//                .build();
-//    }
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getMotDePasse()
+                )
+        );
+        var user = repository.findByEmail(request.getEmail())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken((UserDetails) user);
+        var refreshToken = jwtService.generateRefreshToken((UserDetails) user);
+        revokeAllUserTokens(user);
+        saveUserToken(user, jwtToken);
+        return AuthenticationResponse.builder()
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .user(user)
+                .build();
+    }
 
     private void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()
