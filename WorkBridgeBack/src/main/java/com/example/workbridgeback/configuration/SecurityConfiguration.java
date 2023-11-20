@@ -26,7 +26,7 @@ public class SecurityConfiguration {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
-  //private final LogoutService logoutHandler;
+  private final LogoutService logoutHandler;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -36,19 +36,19 @@ public class SecurityConfiguration {
 
         .authorizeRequests()
             .antMatchers("/**").permitAll()
-//        .anyRequest()
-//          .authenticated()
-//        .and()
-//          .sessionManagement()
-//          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//        .and()
-//        .authenticationProvider(authenticationProvider)
-//        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-//        .logout()
-//        .logoutUrl("/api/v1/auth/logout")
-//        .addLogoutHandler(logoutHandler)
-//        .logoutSuccessHandler((request, response, authentication) ->
-//                SecurityContextHolder.clearContext())
+        .anyRequest()
+          .authenticated()
+        .and()
+          .sessionManagement()
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .authenticationProvider(authenticationProvider)
+        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+        .logout()
+        .logoutUrl("/api/v1/auth/logout")
+        .addLogoutHandler(logoutHandler)
+        .logoutSuccessHandler((request, response, authentication) ->
+                SecurityContextHolder.clearContext())
     ;
 
     return http.build();

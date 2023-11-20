@@ -22,7 +22,7 @@ import java.util.Set;
 @Component
 public class ImageUtil<T> {
 
-    private static String UPLOAD_DIR = ".\\src\\main\\resources\\static\\imagesuploads\\";
+    private static String UPLOAD_DIR = ".\\src\\main\\resources\\static\\";
 
 
     @Transactional
