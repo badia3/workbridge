@@ -71,16 +71,6 @@ public class ProjectController {
     public void deleteProjectDetailes(@PathVariable("projectId") Integer projectId) {
         projectService.deleteProjectDetails(projectId);
     }
-
-/*
-
-    @GetMapping({"/getProjectByUser"})
-    public List<Project> getProjectByUser() {
-        System.out.println("ekhem user ");
-        return projectService.getProjectByUser();
-
-    }
-
     @GetMapping({"/getAllProjects"})
     public List<Project> getAllProjects(@RequestParam(defaultValue = "0") int pageNumber
             , @RequestParam(defaultValue = "") String searchKey) {
@@ -94,8 +84,12 @@ public class ProjectController {
     }
 
 
-    @PreAuthorize("hasRole('User')")
-    @GetMapping({"/getProductDetails/{isSingeProductCheckout}/{productId}"})
+
+
+
+
+/*
+  @GetMapping({"/getProductDetails/{isSingeProductCheckout}/{productId}"})
     public List<Product> getProductDetails(@PathVariable(name="isSingeProductCheckout") boolean isSingeProductCheckout,
                                            @PathVariable(name= "productId") Integer productId) {
 
@@ -103,11 +97,14 @@ public class ProjectController {
 
 
     }
-    @PreAuthorize("hasRole('Admin')")
-    @DeleteMapping({"/deleteProjectDetails/{projectId}"})
-    public void deleteProjectDetailes(@PathVariable("projectId") Integer projectId) {
-        projectService.deleteProjectDetails(projectId);
+    @GetMapping({"/getProjectByUser"})
+    public List<Project> getProjectByUser() {
+        System.out.println("ekhem user ");
+        return projectService.getProjectByUser();
+
     }
+
+
 */
 
 }

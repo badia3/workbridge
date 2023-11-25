@@ -31,20 +31,9 @@ public class ProjectService {
 
     public void deleteProjectDetails(Integer id) {projectDao.deleteById(id);
     }
-
-
-
-/*
-
     public Project getProjectDetailsById(Integer id) {
 
         return projectDao.findById(id).get();
-    }
-    public List<Project> getProjectByUser() {
-        String currentUser = JwtAuthenticationFilter.CURRENT_USER;
-        User user = userDao.findByEmail( currentUser).get();
-
-        return projectDao.findByUser(user);
     }
     public List<Project> getAllProjects(int pageNumber, String searchKey){
         Pageable pageable = PageRequest.of(pageNumber, 8);
@@ -56,6 +45,18 @@ public class ProjectService {
         }
 
     }
+
+/*
+
+
+
+    public List<Project> getProjectByUser() {
+        String currentUser = JwtAuthenticationFilter.CURRENT_USER;
+        User user = userDao.findByEmail( currentUser).get();
+
+        return projectDao.findByUser(user);
+    }
+
 
 */
 }
