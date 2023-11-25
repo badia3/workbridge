@@ -66,6 +66,11 @@ public class ProjectController {
         }
         return imageModels;
     }
+   /* @PreAuthorize("hasRole('Admin')")*/
+    @DeleteMapping({"/deleteProjectDetails/{projectId}"})
+    public void deleteProjectDetailes(@PathVariable("projectId") Integer projectId) {
+        projectService.deleteProjectDetails(projectId);
+    }
 
 /*
 
