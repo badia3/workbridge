@@ -37,11 +37,27 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "user")
-    private Set<ImageModel> userImages;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    @JoinTable(name = "user_images",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", nullable =false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "image_id", nullable = false)
+            })
+    private Set<ImageModel> UserImages;
 
 
-
+    public User(Integer id, String nom, String prenom, String email, Integer telephone, String motDePasse, Role role) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+        this.motDePasse = motDePasse;
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -76,5 +92,16 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+
+
+
+    public Set<ImageModel> getUserImages(Set<ImageModel> images) {
+        return UserImages;
+    }
+
+    public void setUserImages(Set<ImageModel> userImages) {
+        UserImages = userImages;
     }
 }

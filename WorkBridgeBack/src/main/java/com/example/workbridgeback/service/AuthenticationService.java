@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -38,7 +39,7 @@ public class AuthenticationService {
     private final ImageUtil imageUtils;  // bech tkamel menna
 
     @Transactional
-    public AuthenticationResponse register(User request, MultipartFile[] imageFiles) {
+    public AuthenticationResponse register(User request, MultipartFile[] file) throws IOException {
         // Save images and associate them with the user
 
         var user = User.builder()
@@ -49,8 +50,9 @@ public class AuthenticationService {
                 .motDePasse(passwordEncoder.encode(request.getMotDePasse()))
                 .role(request.getRole())
                 .build();
-        Set<ImageModel> savedImages = imageUtils.saveImages(user, imageFiles);
-        user.setUserImages(savedImages);
+        Set<ImageModel> images = uplodImage(file);
+
+        user.setUserImages(images);
 
         repository.save(user);
 
@@ -65,6 +67,19 @@ public class AuthenticationService {
                 .build();
     }
 
+    public Set<ImageModel> uplodImage(MultipartFile[] multipartFiles) throws IOException{
+
+        Set<ImageModel> imageModels = new HashSet<>();
+
+        for(MultipartFile file: multipartFiles) {
+            ImageModel imageModel = new ImageModel(
+                    file.getOriginalFilename(),
+                    file.getContentType(),
+                    file.getBytes());
+            imageModels.add(imageModel);
+        }
+        return imageModels;
+    }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(

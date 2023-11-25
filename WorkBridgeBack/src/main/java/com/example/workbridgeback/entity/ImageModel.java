@@ -1,10 +1,12 @@
 package com.example.workbridgeback.entity;
 
 
+
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "image_model")
+
 public class ImageModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,16 +16,17 @@ public class ImageModel {
 
     @Column(length = 50000000)
     private byte[] picByte;
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "userId")
-    private User user;
+
+
 
 
 
     public ImageModel() {
+        super();
     }
 
     public ImageModel(String name, String type, byte[] picByte) {
+        super();
         this.name = name;
         this.type = type;
         this.picByte = picByte;
@@ -61,7 +64,7 @@ public class ImageModel {
         this.picByte = picByte;
     }
 
-    public void setUser(User user) {
-        this.user=user;
-    }
+
+
+
 }

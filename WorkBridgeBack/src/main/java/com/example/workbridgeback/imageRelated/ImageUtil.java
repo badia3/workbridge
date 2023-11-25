@@ -2,6 +2,7 @@ package com.example.workbridgeback.imageRelated;
 
 import com.example.workbridgeback.dao.UserDao;
 import com.example.workbridgeback.entity.ImageModel;
+import com.example.workbridgeback.entity.Project;
 import com.example.workbridgeback.entity.User;
 import com.example.workbridgeback.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +61,10 @@ public class ImageUtil<T> {
         img.setType(imageFile.getContentType());
         img.setPicByte(imageFile.getBytes());
         if(obj instanceof User){
-            img.setUser((User) obj);
+            img.setId((img).getId());
+           //  ((User) obj).setUserImages((Set<ImageModel>) img);
         }
+
 
         return img;
     }
