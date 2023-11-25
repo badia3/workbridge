@@ -84,7 +84,12 @@ public class ProjectController {
     }
 
 
+    @GetMapping({"/getProjectByUser"})
+    public List<Project> getProjectByUser() {
+        System.out.println("ekhem user ");
+        return projectService.getProjectByUser();
 
+    }
 
 
 
@@ -97,12 +102,7 @@ public class ProjectController {
 
 
     }
-    @GetMapping({"/getProjectByUser"})
-    public List<Project> getProjectByUser() {
-        System.out.println("ekhem user ");
-        return projectService.getProjectByUser();
 
-    }
 
 
 */
