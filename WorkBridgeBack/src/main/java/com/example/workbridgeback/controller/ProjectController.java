@@ -67,7 +67,7 @@ public class ProjectController {
         return imageModels;
     }
 
-
+/*
 
     @GetMapping({"/getProjectByUser"})
     public List<Project> getProjectByUser() {
@@ -88,7 +88,7 @@ public class ProjectController {
 
     }
 
-    /*
+
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/getProductDetails/{isSingeProductCheckout}/{productId}"})
     public List<Product> getProductDetails(@PathVariable(name="isSingeProductCheckout") boolean isSingeProductCheckout,
@@ -98,11 +98,11 @@ public class ProjectController {
 
 
     }
-    @PreAuthorize("hasRole('Admin')")*/
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping({"/deleteProjectDetails/{projectId}"})
     public void deleteProjectDetailes(@PathVariable("projectId") Integer projectId) {
         projectService.deleteProjectDetails(projectId);
     }
-
+*/
 
 }

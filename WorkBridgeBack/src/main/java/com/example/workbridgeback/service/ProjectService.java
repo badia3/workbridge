@@ -28,6 +28,7 @@ public class ProjectService {
 
         return projectDao.save(project);
     }
+    /*
     public void deleteProjectDetails(Integer id) {projectDao.deleteById(id);
     }
 
@@ -56,6 +57,5 @@ public class ProjectService {
 
     }
 
-
+*/
 }
-
